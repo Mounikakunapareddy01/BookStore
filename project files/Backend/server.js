@@ -1,4 +1,6 @@
 const express = require('express')
+const app = express()
+
 const PORT = 4000
 const cors = require('cors')
 require('./db/config')
@@ -10,8 +12,12 @@ const items = require('./db/Seller/Additem')
 const myorders = require('./db/Users/myorders')
 const WishlistItem = require('./db/Users/Wishlist')     
 const mongoose = require("mongoose");
-const app = express()
+// const app = express()
 
+// // ✅ Add this route at the bottom
+// app.get("/", (req, res) => {
+//   res.send("✅ Backend is running!");
+// });
 
 
 app.use(express.json())
@@ -347,6 +353,12 @@ app.post('/wishlist/add', async (req, res) => {
 
 
 
+
+
+// ✅ Add this route at the bottom
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running!");
+});
 
 
 app.listen(PORT, () => {

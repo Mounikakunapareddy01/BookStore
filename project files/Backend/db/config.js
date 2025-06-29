@@ -15,8 +15,20 @@
 
 
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/BookStore')
-  .then(() => console.log("✅ MongoDB connected to BookStore DB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+// mongoose.connect('mongodb://127.0.0.1:27017/BookStore')
+//   .then(() => console.log("✅ MongoDB connected to BookStore DB"))
+//   .catch((err) => console.error("❌ MongoDB connection error:", err));
+
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load env variables
+
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB connected to BookStore DB"))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
