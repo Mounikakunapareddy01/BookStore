@@ -1,7 +1,9 @@
+
+require('dotenv').config();
 const express = require('express')
 const app = express()
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000;
 const cors = require('cors')
 require('./db/config')
 const multer = require('multer'); // Import multer
@@ -23,7 +25,10 @@ const mongoose = require("mongoose");
 app.use(express.json())
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+          "http://localhost:5173",
+            "https://bookstore-1-b3q3.onrender.com" // replace with your actual frontend URL
+            ],
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true
 }));
