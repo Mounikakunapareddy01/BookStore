@@ -127,7 +127,7 @@
 
 // export default Alogin;
 
-
+import BASE_URL from '../config'; // adjust path as needed
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -144,7 +144,7 @@ const Alogin = () => {
     e.preventDefault();
     let payload = { email, password };
     axios
-      .post("http://localhost:4000/alogin", payload)
+      .post(`${BASE_URL}/alogin`, payload)
       .then((res) => {
         if (res.data.Status === "Success") {
           localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -221,7 +221,7 @@ const Alogin = () => {
         </div>
       </div>
 
-      <style>{`
+<style>{`
       .admin-login-container {
   display: flex;
   align-items: center;

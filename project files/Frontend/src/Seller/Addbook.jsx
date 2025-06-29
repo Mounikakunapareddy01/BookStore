@@ -1,3 +1,5 @@
+
+import BASE_URL from '../config'; // adjust path as needed
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +45,7 @@ const handleSubmit = async (e) => {
        formDataToSend.append('userName', user.name);
        formDataToSend.append('userId', user.id);
 
-      await axios.post('http://localhost:4000/items', formDataToSend);
+      await axios.post(`${BASE_URL}/items`, formDataToSend);
       alert('Book added successfully');
       navigate('/myproducts')
     } catch (error) {

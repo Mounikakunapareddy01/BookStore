@@ -87,6 +87,7 @@
 // }
 
 // export default Ahome;
+import BASE_URL from '../config'; // adjust path as needed
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -103,7 +104,7 @@ function Ahome() {
 
   useEffect(() => {
     // Fetch user data
-    axios.get(`http://localhost:4000/users`)
+    axios.get(`${BASE_URL}/users`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -112,7 +113,7 @@ function Ahome() {
       });
 
     // Fetch vendors data
-    axios.get(`http://localhost:4000/sellers`)
+    axios.get(`${BASE_URL}/sellers`)
       .then((response) => {
         setVendors(response.data);
       })
@@ -121,7 +122,7 @@ function Ahome() {
       });
 
       // Fetch items data
-    axios.get(`http://localhost:4000/item`)
+    axios.get(`${BASE_URL}/item`)
     .then((response) => {
       setItems(response.data);
       console.log(items)
@@ -131,7 +132,7 @@ function Ahome() {
     });
 
       // Fetch orders data
-    axios.get(`http://localhost:4000/orders`)
+    axios.get(`${BASE_URL}/orders`)
     .then((response) => {
       setOrders(response.data);
     })

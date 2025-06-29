@@ -206,6 +206,8 @@
 // }
 
 // export default Myorders;
+import BASE_URL from '../config'; // adjust path as needed
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Seller/List.css';
@@ -222,7 +224,7 @@ function Myorders() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
     axios
-      .get(`http://localhost:4000/getorders/${user.id}`)
+      .get(`${BASE_URL}/getorder/${user.id}`)
       .then((response) => {
         const taskData = response.data;
         setCars(taskData);
@@ -275,7 +277,7 @@ function Myorders() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                   <div>
-                    <img  src={`http://localhost:4000/${item.itemImage}`}alt={`${item.itemtype} Image`} style={{ height: "80px" }} />
+                    <img  src={`/${BASE_URL}/${item.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px" }} />
                   </div>
                   <div>
                     <p>ProductName:</p>

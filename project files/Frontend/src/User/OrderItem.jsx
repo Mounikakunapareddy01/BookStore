@@ -200,6 +200,7 @@
 // }
 
 // export default  OrderItem
+import BASE_URL from '../config'; // adjust path as needed
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -220,7 +221,7 @@ function OrderItem() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/item/${id}`)
+    axios.get(`${BASE_URL}/item/${id}`)
       .then((resp) => {
         setItem(resp.data);
       })
@@ -267,7 +268,7 @@ function OrderItem() {
       updatedFormData.userName = username;
 
       // Post the updatedFormData
-      await axios.post('http://localhost:4000/userorder', updatedFormData);
+      await axios.post(`${BASE_URL}/userorder`, updatedFormData);
       console.log(updatedFormData);
       alert('Ordered successfully');
       navigate('/myorders');
@@ -344,7 +345,7 @@ function OrderItem() {
                 <div>
                   <div style={{ display: "flex", justifyContent: "flex-end", height: "100%",width:"100%" }} >
                   <div style={{ height: "100px",width:"50px" }} >
-                        <img src={`http://localhost:4000/${item?.itemImage}`} alt={`${item.itemtype} Image`} />
+                        <img src={`/${BASE_URL}/${item?.itemImage}`} alt={`${item.itemtype} Image`} />
                         {/* <p className='text-end'>{item.itemtype}-{item._id.slice(3, 7)}</p> */}
                         <p className='text-end'>{item.itemtype}-{item._id ? item._id.slice(3, 7) : ''}</p>
                     </div>

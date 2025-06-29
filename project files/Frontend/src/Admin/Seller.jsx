@@ -1,3 +1,5 @@
+
+import BASE_URL from '../config'; // adjust path as needed
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Table,Card } from 'react-bootstrap';
@@ -18,8 +20,8 @@ const Seller = () => {
   // const [showDetail, setShowDetail] = useState(false);
 
    useEffect(() => {
-    axios.get(`http://localhost:4000/sellers`)
-      .then((response) => {
+    axios.get(`${BASE_URL}/Seller`)
+       .then((response) => {
         setUsers(response.data);
         // setLoading(false);
       })
@@ -30,12 +32,12 @@ const Seller = () => {
 }, []);
 
 const deleteData = (taskId) => {
-    axios.delete(`http://localhost:4000/sellerdelete/${taskId}`);
+    axios.delete(`${BASE_URL}/sellerdelete/${taskId}`);
     window.location.assign('/sellers');
     alert('User is deleted');
   };
   const deleteitem = (taskId) => {
-    axios.delete(`http://localhost:4000/useritemdelete/${taskId}`);
+    axios.delete(`${BASE_URL}/useritemdelete/${taskId}`);
     window.location.assign('/users');
     alert('deleted');
   };
@@ -46,7 +48,7 @@ const deleteData = (taskId) => {
   
   const fetchUserBikeData = (userId) => {
    
-    axios.get(`http://localhost:4000/getitem/${userId}`)
+    axios.get(`${BASE_URL}/getitem/${userId}`)
 
     .then((response) => {
       setUserbookings(response.data);
@@ -128,7 +130,7 @@ const deleteData = (taskId) => {
                               >
                                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                   <div>
-                                    <img src={`http://localhost:4000/${item?.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px",width:"120px" }} /> <br/>
+                                    <img src={`${BASE_URL}/${item?.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px",width:"120px" }} /> <br/>
                                   </div>
                                   <div>
                                     <p>Product Name:</p>

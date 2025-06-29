@@ -1,3 +1,4 @@
+import BASE_URL from '../config'; // adjust path as needed
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -18,7 +19,7 @@ function Orders() {
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user)
     if (user) {
-      axios.get(`http://localhost:4000/getsellerorders/${user.id}`)
+      axios.get(`${BASE_URL}/getsellerorders/${user.id}`)
   .then((response) => {
     setOrders(response.data);
   })
@@ -71,7 +72,7 @@ function Orders() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                   <div>
-                    <img src={`http://localhost:4000/${item?.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px" }} />
+                    <img src={`/${BASE_URL}/${item?.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px" }} />
                   </div>
                   <div>
                     <p>ProductName:</p>

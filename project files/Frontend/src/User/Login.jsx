@@ -133,6 +133,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Home from '../Componenets/Home';
+import BASE_URL from '../config'; // adjust path as needed
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -145,7 +146,7 @@ const Login = () => {
     e.preventDefault();
     let payload = { email, password };
     axios
-      .post("http://localhost:4000/login", payload)
+      .post(`${BASE_URL}/login`, payload)
       .then((res) => {
         if (res.data.Status === "Success") {
           localStorage.setItem('user', JSON.stringify(res.data.user));

@@ -121,6 +121,7 @@
 // };
 
 // export default Ssignup;
+import BASE_URL from '../config'; // adjust path as needed
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -137,7 +138,7 @@ const Ssignup = () => {
     let payload = { name, email, password };
 
     axios
-      .post("http://localhost:4000/ssignup", payload)
+      .post(`${BASE_URL}/ssignup`, payload)
       .then((result) => {
         alert('Account created');
         console.log(result);

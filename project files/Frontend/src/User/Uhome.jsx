@@ -1,3 +1,4 @@
+import BASE_URL from '../config'; // adjust path as needed
 import React from 'react'
 import Unavbar from './Unavbar'
 import "./uhome.css"

@@ -1,3 +1,4 @@
+import BASE_URL from '../config'; // adjust path as needed
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -20,7 +21,7 @@ function Shome() {
       console.log(user)
       if (user) {
         axios
-          .get(`http://localhost:4000/getitem/${user.id}`)
+          .get(`${BASE_URL}/getitem/${user.id}`)
           .then((response) => {
             console.log('Response data:', response.data); // Log the response data
             const taskData = response.data;
@@ -34,7 +35,7 @@ function Shome() {
       }
 
       // Fetch orders data
-     axios.get(`http://localhost:4000/getsellerorders/${user.id}`)
+     axios.get(`${BASE_URL}/getsellerorders/${user.id}`)
     .then((response) => {
       setOrders(response.data);
     })

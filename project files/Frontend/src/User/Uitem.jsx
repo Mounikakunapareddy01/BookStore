@@ -1,3 +1,4 @@
+import BASE_URL from '../config'; // adjust path as needed
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -10,7 +11,7 @@ const Uitem = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/item/${id}`)
+        axios.get(`${BASE_URL}/item/${id}`)
             .then((resp) => {
                 console.log(resp);
                 setItem(resp.data); // Set item to the fetched data (an object, not an array)
@@ -27,7 +28,7 @@ const Uitem = () => {
             {item && (
                 <div>
                     <div style={{ display: "flex", justifyContent: "center", height: "450px" }} >
-                        <img src={`http://localhost:4000/${item?.itemImage}`} alt={`${item.itemtype} Image`} />
+                        <img src={`/${BASE_URL}/${item?.itemImage}`} alt={`${item.itemtype} Image`} />
                     </div>
                     <h1 className='text-center'> {item.itemtype}-{item._id.slice(3, 7)}</h1>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>

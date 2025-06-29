@@ -1,5 +1,6 @@
 // Wishlist.js
 
+import BASE_URL from '../config'; // adjust path as needed
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
@@ -14,7 +15,7 @@ function Wishlist() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
     axios
-      .get(`http://localhost:4000/wishlist/${user.id}`) // Adjust the endpoint accordingly
+      .get(`${BASE_URL}/wishlist/${user.id}`) // Adjust the endpoint accordingly
       .then((response) => {
         const wishlistData = response.data;
         setWishlist(wishlistData);
@@ -30,12 +31,12 @@ function Wishlist() {
   const removeFromWishlist = async (itemId) => {
     try {
       // Remove item from the wishlist
-      await axios.post(`http://localhost:4000/wishlist/remove`, { itemId }); // Adjust the endpoint accordingly
+      await axios.post(`${BASE_URL}/wishlist/remove`, { itemId }); // Adjust the endpoint accordingly
 
       // Refresh the wishlist items
       const user = JSON.parse(localStorage.getItem('user'));
       if(user){
-      const response = await axios.get(`http://localhost:4000/wishlist/${user.id}`,); // Adjust the endpoint accordingly
+      const response = await axios.get(`${BASE_URL}/wishlist/${user.id}`,); // Adjust the endpoint accordingly
       setWishlist(response.data);
     } 
     else{
@@ -55,7 +56,7 @@ function Wishlist() {
         {wishlist.map((item) => (
           <div key={item._id} className="bg-white p-4 rounded shadow">
             <img
-              src={`http://localhost:4000/${item.itemImage}`}
+              src={`/${BASE_URL}/${item.itemImage}`}
               alt="Item Image"
               className="rounded-t-lg"
               style={{ height: '350px', width: '500px' }}

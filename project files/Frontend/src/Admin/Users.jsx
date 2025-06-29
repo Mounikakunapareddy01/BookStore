@@ -1,3 +1,4 @@
+import BASE_URL from '../config'; // adjust path as needed
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Table,Card } from 'react-bootstrap';
@@ -22,7 +23,7 @@ const Users = () => {
   };
 
    useEffect(() => {
-    axios.get(`http://localhost:4000/users`)
+      axios.get(`${BASE_URL}/user`)
       .then((response) => {
         setUsers(response.data);
         // setLoading(false);
@@ -34,12 +35,12 @@ const Users = () => {
 }, []);
 
 const deleteData = (taskId) => {
-    axios.delete(`http://localhost:4000/userdelete/${taskId}`);
+    axios.delete(`${BASE_URL}/user/${taskId}`);
     window.location.assign('/users');
     alert('User is deleted');
   };
   const deleteorder = (taskId) => {
-    axios.delete(`http://localhost:4000/userorderdelete/${taskId}`);
+    axios.delete(`${BASE_URL}/userorderdelete/${taskId}`);
     window.location.assign('/users');
     alert('deleted');
   };
@@ -50,7 +51,7 @@ const deleteData = (taskId) => {
   
   const fetchUserBikeData = (userId) => {
    
-    axios.get(`http://localhost:4000/getorders/${userId}`)
+    axios.get(`${BASE_URL}/getorders/${userId}`)
 
     .then((response) => {
       setUserbookings(response.data);
@@ -132,7 +133,7 @@ const deleteData = (taskId) => {
                               >
                                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                   <div>
-                                    <img src={`http://localhost:4000/${item?.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px" }} />
+                                    <img src={`${BASE_URL}/${item?.itemImage}`} alt={`${item.itemtype} Image`} style={{ height: "80px" }} />
                                   </div>
                                   <div>
                                     <p>Product Name:</p>

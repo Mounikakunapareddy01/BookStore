@@ -121,6 +121,7 @@
 // };
 
 // export default Signup;
+import BASE_URL from '../config'; // adjust path as needed
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -138,7 +139,7 @@ const Signup = () => {
     let payload = { name, email, password };
 
     axios
-      .post("http://localhost:4000/signup", payload)
+      .post(`${BASE_URL}/signup`, payload)
       .then((result) => {
         alert('Account created');
         console.log(result);
