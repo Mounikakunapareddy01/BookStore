@@ -31,7 +31,7 @@ function App() {
   return (
       <div>
        
-       <BrowserRouter basename="/BookStore">
+       <BrowserRouter basename="/">
 
        <Routes>
        <Route path='/' element={<Home/>} />
